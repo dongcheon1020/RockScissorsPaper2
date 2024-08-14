@@ -43,6 +43,7 @@ function App() {
       user: {
         ...prevBox.user,
         image: selectedChoice.image,
+        result: algorithms(selectedChoice.name, choices[getRandomNum].name),
       },
     }));
 
@@ -54,11 +55,28 @@ function App() {
       computer: {
         ...prevBox.computer,
         image: choices[getRandomNum].image,
+        result: algorithms(choices[getRandomNum].name, selectedChoice.name),
       },
     }));
   };
 
   const randomNum = () => Math.floor(Math.random() * 3);
+
+  const algorithms = (userChoice, computerChoice) => {
+    if (userChoice === computerChoice) {
+      return "tie";
+    }
+
+    if (
+      (userChoice === "rock" && computerChoice === "scissors") ||
+      (userChoice === "scissors" && computerChoice === "paper") ||
+      (userChoice === "paper" && computerChoice === "rock")
+    ) {
+      return "win";
+    } else {
+      return "lose";
+    }
+  };
 
   return (
     <div>

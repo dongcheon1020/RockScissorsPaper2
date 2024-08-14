@@ -1,11 +1,16 @@
 import React from "react";
 
-const GmaeBox = ({ box, useBox }) => {
+const GmaeBox = ({ box, setBox }) => {
   return (
     <div
       style={{
         width: "300px",
-        backgroundColor: "red",
+        backgroundColor:
+          box.result === "win"
+            ? "green"
+            : box.result === "lose"
+            ? "red"
+            : "white",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
